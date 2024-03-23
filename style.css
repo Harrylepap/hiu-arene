@@ -1,0 +1,53 @@
+
+/* Animated background */
+@keyframes animatedBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: animatedBackground 20s linear infinite;
+}
+
+.login-form {
+    margin: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.login-description {
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Loader container styles */
+.loader-container {
+    display: none; /* Hidden by default */
+    position: fixed; /* Positioned relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1051; /* Higher than the navbar z-index in Bootstrap */
+    justify-content: center;
+    align-items: center;
+  }
+  

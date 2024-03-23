@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tongasoa - HIU</title>
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  /* Additional styling to ensure the form is centered vertically and horizontally */
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  /* Loader and its container styles */
+  .loader-container {
+    display: none; /* Hidden by default */
+    position: fixed; /* Positioned relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1051; /* Higher than the navbar z-index in Bootstrap */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 30px;
+    height: 30px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="form-signin" onsubmit="return false;">
+        <!-- Logo placeholder -->
+        <img src="cadena.jpeg" class="mb-4" alt="Logo" style="display: block; margin-left: auto; margin-right: auto; width: 72px;">
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control text-center" placeholder="Adresse email" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control text-center" placeholder="Mot de passe" required>
+        <div class="mb-3"></div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit" id="signInButton">Se connecter</button>
+        <p class="mt-5 mb-3 text-muted text-center">&copy; 2024</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Loader Container -->
+<div class="loader-container" id="loaderContainer">
+  <div class="loader"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Attention</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Hey ! Tu pensais pouvoir ouvrir ce cadena comme ça ? Il te faut la clé du succès pour percer ce mystère! Crois-tu vraiment que le paradis est si facilement hackable ? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#signInButton').click(function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      $('#loaderContainer').css('display', 'flex'); // Show the loader container
+
+      // Simulate a network request with a timeout
+      setTimeout(function() {
+        $('#loaderContainer').hide(); // Hide the loader container
+
+        // Show the modal with the message
+        $('#infoModal').modal('show');
+      }, 2000); // 2000 milliseconds = 2 seconds delay to mimic a network call
+    });
+  });
+</script>
+</body>
+</html>
